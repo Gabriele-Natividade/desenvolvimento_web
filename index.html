@@ -1,13 +1,88 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atividade 01 - HTML</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conheça a UNEB Campus II</title>
+  <style>
+    body {font-family: Arial, sans-serif; margin: 20px; background: #f7f7fc; color: #333;}
+    h1, h2 {color: #003366; text-align: center;}
+    a {color: #0055a5; text-decoration: none;}
+    a:hover {text-decoration: underline;}
+    table {width: 100%; border-collapse: collapse; margin: 20px 0;}
+    th, td {border: 1px solid #ccc; padding: 8px; text-align: left;}
+    th {background-color: #003366; color: #fff;}
+    form {text-align: center; margin-top: 30px;}
+    input, select, button {padding: 8px; margin: 5px; border-radius: 5px; border: 1px solid #ccc;}
+    button {background: #003366; color: white; cursor: pointer;}
+    button:hover {background: #0055a5;}
+  </style>
 </head>
 <body>
-    <h1> Ativiadade  01 -Inicio <h1> 
-    <p> Este é o meu primeiro parágrafo feito em HTML</p>
-       
+  <h1>Conheça a UNEB Campus II - Alagoinhas</h1>
+  <div style="text-align:center;">
+    <img src="https://www.blogdovestibular.com/wp-content/uploads/2019/09/UNEB.jpg" alt="Brasão da UNEB" width="220"><br>
+    <a href="https://portal.uneb.br/" target="_blank">Portal Oficial da UNEB</a>
+  </div>
+
+  <h2>História e Estrutura</h2>
+  <table>
+    <tr><th>Tema</th><th>Resumo</th></tr>
+    <tr><td>Origem</td><td>A UNEB foi criada em 1983 e é referência em educação pública superior na Bahia.</td></tr>
+    <tr><td>Interiorização</td><td>Levou o ensino superior a diversas regiões, com 24 campi em todo o estado.</td></tr>
+    <tr><td>Pioneirismo Social</td><td>Promove inclusão e cidadania por meio de programas de extensão e pesquisa social.</td></tr>
+    <tr><td>Campus II</td><td>Localizado em Alagoinhas, o campus reúne os departamentos DEDC II, DCET II e DLLA II.</td></tr>
+  </table>
+
+  <h2>Departamentos e Colegiados</h2>
+  <table>
+    <tr><th>Departamento</th><th>Área</th><th>Site</th></tr>
+    <tr><td>DEDC II</td><td>Educação</td><td><a href="https://dedc2.uneb.br/estrutura/" target="_blank">dedc2.uneb.br</a></td></tr>
+    <tr><td>DCET II</td><td>Ciências Exatas e Tecnológicas</td><td><a href="https://www.dcet2.uneb.br/" target="_blank">dcet2.uneb.br</a></td></tr>
+    <tr><td>DLLARTES II</td><td>Letras e Artes</td><td><a href="https://www.dllartes2.uneb.br/" target="_blank">dllartes2.uneb.br</a></td></tr>
+  </table>
+
+  <h2>Cursos de Graduação - Campus II</h2>
+  <table>
+    <tr><th>Curso</th><th>Departamento</th></tr>
+    <tr><td>Engenharia de Software - Engenharia Sanitária e Ambiental - Matemática Ciências Biológicas - SI</td><td>DCET II</td></tr>
+    <tr><td>Letras - Português/Inglês/Frânces</td><td>DLLARTES II</td></tr>
+    <tr><td> Pedagogia - Educação Física - História</td><td>DEDC II</td></tr>
+   
+  </table>
+
+  <h2>Simule sua Matrícula</h2>
+  <form onsubmit="return simular(event)">
+    <input type="text" id="nome" placeholder="Nome completo" required>
+    <select id="curso" required>
+      <option value="">Selecione o curso</option>
+      <option>Engenharia de Software</option>
+      <option>Letras - Português/Inglês/Frânces</option>
+      <option>Pedagogia/<option>
+      <option>Matemática</option>
+      <option>Biologia</option>
+      <option>Ed. Física</option>
+      <option>Engenharia Sanitária e Ambiental</option>
+      <option>História</option>
+    
+    </select>
+    <button type="submit">Simular Matrícula</button>
+  </form>
+  <p id="resultado" style="text-align:center;"></p>
+
+  <p style="text-align:center; margin-top:20px;">
+    Inscreva-se oficialmente no Vestibular UNEB 2026 em <a href="https://vestibular2026.uneb.br/" target="_blank">vestibular2026.uneb.br</a>
+  </p>
+
+  <script>
+    function simular(event) {
+      event.preventDefault();
+      const nome = document.getElementById('nome').value;
+      const curso = document.getElementById('curso').value;
+      if (!nome || !curso) return alert('Preencha todos os campos!');
+      const id = Math.floor(100000 + Math.random() * 900000);
+      document.getElementById('resultado').innerHTML = `<strong>${nome}</strong>, sua inscrição simulada em <strong>${curso}</strong> foi gerada!<br>Número de inscrição: <strong>${id}</strong>`;
+    }
+  </script>
 </body>
 </html>
