@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Catálogo de Filmes</title>
+    <style>
+      :root {
+        --dark: #001e3c;
+        --blue: #004a99;
+        --mid: #0b78d1;
+        --light: #f4f9ff;
+        --card: #fff;
+        --text: #102029;
+        --muted: #6b7a8a;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: "Segoe UI", Roboto, Arial, sans-serif;
+        background: linear-gradient(180deg, var(--light), #dceeff);
+        color: var(--text);
+        line-height: 1.5;
+      }
+      header,
+      footer {
+        background: linear-gradient(90deg, var(--dark), var(--blue));
+        color: #fff;
+        text-align: center;
+        padding: 2rem 1rem;
+      }
+      h1 {
+        font-size: 2.2rem;
+        letter-spacing: 0.5px;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+      }
+      nav ul {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        list-style: none;
+        gap: 0.8rem;
+        margin-top: 1rem;
+      }
+      nav a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: 600;
+        padding: 0.4rem 0.8rem;
+        border-radius: 0.4rem;
+      }
+      nav a:hover {
+        background: rgba(255, 255, 255, 0.1);
+      }
+      main {
+        max-width: 1200px;
+        margin: 2rem auto;
+        padding: 0 1rem;
+      }
+      section {
+        margin-bottom: 2rem;
+      }
+      .card,
+      .destaque,
+      .catalogo,
+      .table-section,
+      .sobre {
+        background: var(--card);
+        border-radius: 12px;
+        padding: 1rem;
+        border: 1px solid rgba(0, 0, 0, 0.06);
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+      }
+      h3 {
+        color: var(--blue);
+        margin-bottom: 0.8rem;
+      }
+      .card-destaque {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        align-items: flex-start;
+      }
+      .poster-large {
+        width: 240px;
+        border-radius: 10px;
+      }
+      .meta p {
+        color: var(--muted);
+        text-align: justify;
+        margin: 0.5rem 0;
+      }
+      .chip {
+        background: rgba(11, 120, 209, 0.1);
+        border: 1px solid rgba(11, 120, 209, 0.15);
+        color: var(--blue);
+        padding: 0.25rem 0.6rem;
+        border-radius: 999px;
+        font-size: 0.85rem;
+      }
+      .grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        justify-content: center;
+      }
+      .film-card {
+        background: var(--card);
+        border-radius: 10px;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        width: 200px;
+        padding: 0.6rem;
+        transition: 0.2s;
+      }
+      .film-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+      }
+      .film-poster {
+        width: 100%;
+        height: 260px;
+        object-fit: cover;
+        border-radius: 6px;
+      }
+      .film-title {
+        display: block;
+        font-weight: 700;
+        color: var(--blue);
+        margin: 0.4rem 0;
+        text-decoration: none;
+      }
+      .meta-row {
+        display: flex;
+        justify-content: space-between;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+      .film-gen {
+        color: var(--muted);
+        font-size: 0.88rem;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.95rem;
+      }
+      th,
+      td {
+        padding: 0.6rem;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+      }
+      th {
+        background: linear-gradient(90deg, var(--blue), var(--mid));
+        color: #fff;
+        text-align: left;
+      }
+      tr:nth-child(even) {
+        background: #f6fbff;
+      }
+      .sobre img {
+        width: 100px;
+        float: right;
+        margin-left: 1rem;
+        border-radius: 6px;
+      }
+      .redes {
+        display: flex;
+        gap: 0.8rem;
+        flex-wrap: wrap;
+        margin-top: 1rem;
+      }
+      .redes a {
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        padding: 0.4rem 0.7rem;
+        border-radius: 0.5rem;
+        color: var(--blue);
+        text-decoration: none;
+        font-weight: 600;
+      }
+      .redes a:hover {
+        background: var(--blue);
+        color: #fff;
+      }
+      footer {
+        margin-top: 2rem;
+      }
+      @media (max-width: 700px) {
+        .film-card {
+          width: 46%;
+        }
+        .poster-large {
+          width: 100%;
+          max-width: 340px;
+        }
+        .card-destaque {
+          flex-direction: column;
+          align-items: center;
+        }
+        .sobre img {
+          float: none;
+          margin: 0 auto 1rem auto;
+          display: block;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Catálogo de Filmes</h1>
+      <nav>
+        <ul>
+          <li><a href="#destaque">Destaque</a></li>
+          <li><a href="#catalogo">Catálogo</a></li>
+          <li><a href="#tabela">Prêmios</a></li>
+          <li><a href="#sobre">Sobre</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Destaque -->
+      <section id="destaque" class="destaque">
+        <h3>Destaque da Semana</h3>
+        <div class="card-destaque">
+          <img
+            class="poster-large"
+            src="https://m.media-amazon.com/images/I/71niXI3lxlL._AC_SY679_.jpg"
+            alt="Poster de Inception"
+          />
+          <div class="meta">
+            <h2>Inception (2010)</h2>
+            <p>
+              Ficção científica que explora sonhos e manipulação mental,
+              questionando fronteiras entre memória, culpa e realidade.
+            </p>
+            <div>
+              <span class="chip">Ação</span>
+              <span class="chip">Ficção Científica</span>
+              <span class="chip">Suspense</span>
+            </div>
+            <div class="meta-row"><span>⭐️⭐️⭐️⭐️⭐️</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Catálogo -->
+      <section id="catalogo" class="catalogo">
+        <h3>Catálogo</h3>
+        <div class="grid">
+          <!-- Filme 1 -->
+          <article class="film-card">
+            <img
+              class="film-poster"
+              src="https://m.media-amazon.com/images/M/MV5BYjBiOTYxZWItMzdiZi00NjlkLWIzZTYtYmFhZjhiMTljOTdkXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg"
+              alt="Citizen Kane"
+            />
+            <a class="film-title" href="#">Citizen Kane (1941)</a>
+            <div class="meta-row">
+              <span>Drama</span><span>⭐️⭐️⭐️⭐️⭐️</span>
+            </div>
+            <p class="film-gen">
+              Pioneiro na linguagem cinematográfica, reflete sobre poder,
+              memória e ambição.
+            </p>
+          </article>
+
+          <!-- Filme 2 -->
+          <article class="film-card">
+            <img
+              class="film-poster"
+              src="https://m.media-amazon.com/images/I/51v5ZpFyaFL._AC_.jpg"
+              alt="Fight Club"
+            />
+            <a class="film-title" href="#">Fight Club (1999)</a>
+            <div class="meta-row">
+              <span>Drama</span><span>⭐️⭐️⭐️⭐️⭐️</span>
+            </div>
+            <p class="film-gen">
+              Crítica ao consumismo e à alienação moderna sob a ótica da
+              violência simbólica.
+            </p>
+          </article>
+
+          <!-- Filme 3 -->
+          <article class="film-card">
+            <img
+              class="film-poster"
+              src="https://th.bing.com/th/id/OIP.OVBZB-nCsE9miV7jJa0DwAHaKe?w=123&h=180&c=7&r=0&o=7&pid=1.7&rm=3"
+              alt="Interstellar"
+            />
+            <a class="film-title" href="#">Interstellar (2014)</a>
+            <div class="meta-row">
+              <span>Ficção Científica</span><span>⭐️⭐️⭐️⭐️⭐️</span>
+            </div>
+            <p class="film-gen">
+              Explora laços humanos em meio ao tempo e espaço, unindo emoção e
+              ciência.
+            </p>
+          </article>
+
+          <!-- Adicione mais 12 filmes semelhantes -->
+        </div>
+      </section>
+
+      <!-- Tabela de prêmios -->
+      <section id="tabela" class="table-section">
+        <h3>Filmes Premiados</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Filme</th>
+              <th>Ano</th>
+              <th>Nota</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Oppenheimer</td>
+              <td>2023</td>
+              <td>9.1</td>
+              <td>Oscars</td>
+            </tr>
+            <tr>
+              <td>Parasite</td>
+              <td>2019</td>
+              <td>8.6</td>
+              <td>Palme d'Or / Oscar</td>
+            </tr>
+            <tr>
+              <td>La La Land</td>
+              <td>2016</td>
+              <td>8.0</td>
+              <td>Premiado</td>
+            </tr>
+            <tr>
+              <td>Mad Max: Fury Road</td>
+              <td>2015</td>
+              <td>8.1</td>
+              <td>Prêmio Técnico</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Sobre -->
+      <section id="sobre" class="sobre">
+        <h3>Sobre o Projeto</h3>
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/1077/1077012.png"
+          alt="Ícone de contato"
+        />
+        <p>
+          Este catálogo reúne filmes de destaque para análise estética e
+          narrativa. Resumos e avaliações refletem a recepção do público e
+          relevância cinematográfica.
+        </p>
+        <div class="redes">
+          <a href="#">Instagram</a>
+          <a href="#">GitHub</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        &copy; 2025 Catálogo de Filmes — Desenvolvido por Gabriele Natividade
+      </p>
+    </footer>
+  </body>
+</html>
