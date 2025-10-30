@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prática CSS Completa</title>
+
+  <!-- CSS Interno -->
+  <style>
+    /* ===== CSS EXTERNO SIMULADO ===== */
+    body {
+      font-family: 'Verdana', sans-serif;
+      line-height: 1.5;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f9ff;
+      color: #102029;
+    }
+
+    header, footer {
+      text-align: center;
+      padding: 20px;
+      color: white;
+    }
+
+    header {
+      background-color: #004a99; 
+    }
+
+    footer {
+      background-color: #001e3c;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    section {
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 10px;
+      min-height: 50vh;
+      width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Seções com background */
+    #secao1 {
+      background-color: #f0f8ff;
+      color: #102029;
+    }
+
+    #secao2 {
+      background-color: #e6f2ff;
+    }
+
+    #secao3 {
+      background-color: #dceeff;
+    }
+
+    /* Títulos */
+    h1 {
+      font-family: 'Georgia', serif;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      color: darkblue;
+      font-size: 2rem;
+      font-family: 'Arial', sans-serif;
+      margin-bottom: 10px;
+      border-bottom: 2px solid #004a99;
+      padding-bottom: 5px;
+    }
+
+    /* Parágrafos */
+    p {
+      font-size: 16px; 
+      margin-bottom: 10px;
+    }
+
+    p.intro {
+      color: #555;
+      font-size: 1.1rem; 
+      padding: 5px;
+    }
+
+    /* Listas */
+    ul, ol {
+      padding-left: 20px;
+      margin: 10px 0;
+    }
+
+    li {
+      margin-bottom: 5px;
+      font-size: 1.2em; 
+    }
+
+    /* Tabelas */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    th, td {
+      border: 1px solid #004a99;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #004a99;
+      color: white;
+    }
+
+    /* Links */
+    a {
+      color: #004a99;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Display e Visibility */
+    .hidden {
+      display: none;
+    }
+
+    .invisible {
+      visibility: hidden;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER com estilo inline -->
+  <header style="background-color: #004a99;">
+    <h1 style="text-shadow: 2px 2px 5px rgba(0,0,0,0.3);">Minha Página de Teste CSS</h1>
+    <nav>
+      <ul style="list-style: none; display: flex; justify-content: center; gap: 15px;">
+        <li><a href="#secao1">Seção 1</a></li>
+        <li><a href="#secao2">Seção 2</a></li>
+        <li><a href="#secao3">Seção 3</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Seção 1: Background color, padding, margin, border -->
+    <section id="secao1">
+      <h2>Seção 1 - Espaçamentos</h2>
+      <p class="intro">Esta seção demonstra background-color, padding e margin, sem imagem de fundo.</p>
+      <p style="border: 2px solid #004a99; padding: 10px; margin-top: 15px;">Parágrafo com borda, padding e margin inline.</p>
+    </section>
+
+    <!-- Seção 2: Listas -->
+    <section id="secao2">
+      <h2>Seção 2 - Listas</h2>
+      <ul>
+        <li>Item 1 com margin e padding</li>
+        <li>Item 2 estilizado</li>
+        <li>Item 3 com cores e font-size</li>
+      </ul>
+      <ol>
+        <li>Item A</li>
+        <li>Item B</li>
+        <li>Item C</li>
+      </ol>
+    </section>
+
+    <!-- Seção 3: Tabelas e Links -->
+    <section id="secao3">
+      <h2>Seção 3 - Tabelas e Links</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Idade</th>
+            <th>Cidade</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Ana</td>
+            <td>22</td>
+            <td>Salvador</td>
+          </tr>
+          <tr>
+            <td>Lucas</td>
+            <td>25</td>
+            <td>Alagoinhas</td>
+          </tr>
+        </tbody>
+      </table>
+ da UNEB</a></p>
+
+      <!-- Teste display e visibility -->
+      <p class="hidden">Este parágrafo está escondido (display: none).</p>
+      <p class="invisible">Este parágrafo está invisível (visibility: hidden).</p>
+    </section>
+  </main>
+
+  <footer style="background-color:#001e3c;">
+    &copy; 2025 CSS Prática Completa - Desenvolvido por Gabriele
+  </footer>
+
+</body>
+</html>
