@@ -1,0 +1,181 @@
+/* Fonte e cores gerais */
+body {
+    background: linear-gradient(135deg, #1e1e3f, #23264d, #2c2c60);
+    font-family: 'Poppins', sans-serif;
+    color: #f4f4ff;
+    margin: 0;
+    padding: 0;
+}
+
+h1.titulo {
+    text-align: center;
+    color: #00d9ff;
+    font-size: 60px;
+    margin-top: 40px;
+    text-shadow: 0 0 10px #00d9ff;
+}
+
+.subtitulo {
+    font-size: 22px;
+    color: #e5e5ff;
+}
+
+/* Transições */
+.fade {
+    opacity: 0;
+    transition: opacity 0.8s ease;
+}
+
+.fade.mostrar {
+    opacity: 1;
+}
+
+/* Menu inicial */
+#tela-inicial {
+    text-align: center;
+    margin-top: 120px;
+}
+
+#menu {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 2px solid #00d9ff;
+    display: inline-block;
+    padding: 40px 70px;
+    border-radius: 20px;
+    box-shadow: 0 0 15px rgba(0, 217, 255, 0.5);
+}
+
+.botao-nivel {
+    display: block;
+    background: linear-gradient(90deg, #0077b6, #00b4d8);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    padding: 18px 50px;
+    margin: 20px auto;
+    font-size: 22px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.botao-nivel:hover {
+    background: linear-gradient(90deg, #00b4d8, #0077b6);
+    transform: scale(1.05);
+}
+
+/* Área do jogo */
+section {
+    background-color: rgba(255, 255, 255, 0.05);
+    width: 750px;
+    padding: 40px;
+    margin: 60px auto;
+    border-radius: 15px;
+    border: 1px solid #00d9ff;
+    box-shadow: 0 0 20px rgba(0, 217, 255, 0.3);
+}
+
+/* Barra de status */
+#status-bar {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 10px;
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+#status {
+    font-size: 30px;
+    color: #ff4d6d;
+    font-weight: bold;
+}
+
+/* Número e entrada */
+#numero {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid #00d9ff;
+    border-radius: 10px;
+    text-align: center;
+    padding: 25px;
+    margin-bottom: 30px;
+}
+
+#msgNumero {
+    font-size: 24px;
+    color: #b0e0ff;
+}
+
+.entrada {
+    margin-top: 15px;
+}
+
+#num1 {
+    font-size: 22px;
+    padding: 10px;
+    width: 200px;
+    border-radius: 10px;
+    border: 2px solid #00d9ff;
+    text-align: center;
+    background-color: #121232;
+    color: #ffffff;
+}
+
+#btChutar {
+    background: linear-gradient(90deg, #00d9ff, #0096c7);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 22px;
+    padding: 10px 30px;
+    margin-left: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#btChutar:hover {
+    background: linear-gradient(90deg, #0096c7, #00d9ff);
+    transform: scale(1.05);
+}
+
+/* Resultado */
+#resultado {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    border: 1px solid #00d9ff;
+    text-align: left;
+    padding: 20px;
+    height: 250px;
+    overflow-y: auto;
+    color: #ffffff;
+}
+
+.titulo-secundario {
+    text-align: center;
+    color: #9be3ff;
+    font-size: 26px;
+    margin-bottom: 10px;
+}
+
+/* Botão voltar */
+#btVoltar {
+    background: linear-gradient(90deg, #ff4d6d, #d00000);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 22px;
+    padding: 15px 40px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#btVoltar:hover {
+    background: linear-gradient(90deg, #d00000, #ff4d6d);
+    transform: scale(1.05);
+}
+
+/* Rodapé */
+#txtRodape {
+    text-align: center;
+    margin-top: 20px;
+    color: #9be3ff;
+    font-size: 14px;
+}
