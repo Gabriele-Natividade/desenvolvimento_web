@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Adivinhe a Palavra</title>
+
+    <style>
+      body {
+        background-color: #dce7ff;
+        font-family: Arial, sans-serif;
+      }
+
+      header h1 {
+        text-align: center;
+        color: #0a2e73;
+        font-weight: 900;
+      }
+
+      section {
+        background-color: #ffffff;
+        width: 450px;
+        padding: 15px;
+        margin: auto;
+        border-radius: 12px;
+        box-shadow: 0 0 10px #0004;
+      }
+
+      #box-imagem {
+        background-color: #e3ecff;
+        border-radius: 10px;
+        height: 160px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #box-iniciar {
+        margin: 15px;
+        text-align: center;
+      }
+
+      #btn_iniciar {
+        background-color: #0a53c3;
+        color: white;
+        padding: 12px 25px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 18px;
+        transition: 0.3s;
+      }
+
+      #btn_iniciar:hover {
+        background-color: #083a87;
+      }
+
+      #box-palavra {
+        background-color: #e3ecff;
+        padding: 10px;
+        border-radius: 8px;
+        text-align: center;
+        margin-bottom: 15px;
+      }
+
+      #palavra {
+        font-size: 28px;
+        font-weight: bold;
+        letter-spacing: 5px;
+        color: #06204d;
+      }
+
+      #box-info {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        color: #06204d;
+        font-weight: bold;
+      }
+
+      #box-teclado {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 6px;
+      }
+
+      button.tecla {
+        background-color: #0a53c3;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        padding: 10px 12px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.2s;
+      }
+
+      button.tecla:hover {
+        background-color: #083a87;
+        transform: scale(1.08);
+      }
+
+      button.tecla:disabled {
+        background-color: #768bb6;
+        cursor: not-allowed;
+      }
+
+      #img-menino {
+        height: 140px;
+      }
+
+      footer {
+        text-align: center;
+        margin-top: 15px;
+        color: #06204d;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>Adivinhe a Palavra</h1>
+    </header>
+
+    <section>
+      <div id="box-info">
+        <p>❤️ Vidas: <span id="vidas"></span></p>
+        <p>⏳ Tempo: <span id="tempo"></span></p>
+      </div>
+
+      <div id="box-imagem">
+        <img src="" id="img-menino" />
+      </div>
+
+      <div id="box-iniciar">
+        <button id="btn_iniciar">INICIAR JOGO</button>
+      </div>
+
+      <div id="box-palavra">
+        <p id="palavra">_ _ _ _</p>
+      </div>
+
+      <div id="box-teclado"></div>
+    </section>
+
+    <footer>Desenvolvido — Jogo Reformulado 💙</footer>
+
+    <script>
+      // LISTA DE PALAVRAS
+      const palavras = [
+        "ABACAXI",
+        "MELANCIA",
+        "BANANA",
+        "MORANGO",
+        "UVA",
+        "LARANJA",
+        "PERA",
+        "MANGA",
+        "GOIABA",
+        "CEREJA",
+      ];
+
+      let vidas = 6;
+      let tempoRestante = 30;
+      let intervalo;
+      let palavraAtual = "";
+      let exibicao = [];
+
+      const img = document.getElementById("img-menino");
+      const txtVidas = document.getElementById("vidas");
+      const txtTempo = document.getElementById("tempo");
+      const txtPalavra = document.getElementById("palavra");
+      const teclado = document.getElementById("box-teclado");
+
+      document
+        .getElementById("btn_iniciar")
+        .addEventListener("click", iniciarJogo);
+
+      function iniciarJogo() {
+        vidas = 6;
+        tempoRestante = 30;
+        txtVidas.textContent = vidas;
+        txtTempo.textContent = tempoRestante;
+
+        palavraAtual = palavras[Math.floor(Math.random() * palavras.length)];
+
+        exibicao = Array(palavraAtual.length).fill("_");
+        txtPalavra.textContent = exibicao.join(" ");
+
+        img.src =
+          "https://thumbs.dreamstime.com/z/frutas-lindas-en-estilo-de-moda-del-kawaii-el-fondo-blanco-138798835.jpg?ct=jpeg";
+
+        criarTeclado();
+        iniciarCronometro();
+      }
+
+      function criarTeclado() {
+        teclado.innerHTML = "";
+        const letras = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+        for (let l of letras) {
+          let btn = document.createElement("button");
+          btn.textContent = l;
+          btn.classList.add("tecla");
+
+          btn.onclick = () => verificarLetra(l, btn);
+
+          teclado.appendChild(btn);
+        }
+      }
+
+      function verificarLetra(letra, botao) {
+        botao.disabled = true;
+        let acertou = false;
+
+        for (let i = 0; i < palavraAtual.length; i++) {
+          if (palavraAtual[i] === letra) {
+            exibicao[i] = letra;
+            acertou = true;
+            img.src = "data:image/webp;base64,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"
+
+          }
+        }
+
+        txtPalavra.textContent = exibicao.join(" ");
+
+        if (!acertou) {
+          vidas--;
+          txtVidas.textContent = vidas;
+          img.src = "https://th.bing.com/th/id/OIP.3Q6uKphJbvYZJDAC1qBFRgHaHa?w=178&h=180&c=7&r=0&o=7&cb=ucfimg2&pid=1.7&rm=3&ucfimg=1"; // pode alterar para sprites diferentes
+
+          if (vidas <= 0) {
+            fimDeJogo(false);
+          }
+        }
+
+        if (!exibicao.includes("_")) {
+          fimDeJogo(true);
+        }
+      }
+
+      function iniciarCronometro() {
+        clearInterval(intervalo);
+
+        intervalo = setInterval(() => {
+          tempoRestante--;
+          txtTempo.textContent = tempoRestante;
+
+          if (tempoRestante <= 0) {
+            fimDeJogo(false);
+          }
+        }, 1000);
+      }
+
+      function fimDeJogo(ganhou) {
+        const botoes = document.querySelectorAll(".tecla");
+        botoes.forEach((b) => (b.disabled = true));
+
+        if (ganhou) {
+          alert("🎉 Você acertou! A palavra era: " + palavraAtual);
+          img.src = "https://th.bing.com/th/id/OIP.ouaVTLPfSHzPfyPOZ730IQHaE7?w=278&h=185&c=7&r=0&o=7&cb=ucfimg2&pid=1.7&rm=3&ucfimg=1"
+        } else {
+          alert("😢 Fim de jogo! A palavra era: " + palavraAtual);
+        }
+
+        clearInterval(intervalo);
+      }
+    </script>
+  </body>
+</html>

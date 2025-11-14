@@ -1,0 +1,38 @@
+:root{
+--bg:#eaf2ff;
+--panel:#ffffff;
+--accent-blue:#0b63d6;
+--accent-dark:#052a66;
+--danger:#d64545;
+--muted:#7b8aa3;
+--glass: rgba(11,99,214,0.06);
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial}
+body{background:linear-gradient(180deg,var(--bg),#dfefff);display:flex;align-items:center;justify-content:center;padding:20px}
+.container{width:100%;max-width:980px}
+.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.topbar h1{margin:0;color:var(--accent-dark);font-size:24px}
+.status{display:flex;gap:12px;align-items:center}
+.status .vidas, .status .tempo{background:var(--panel);padding:8px 12px;border-radius:8px;box-shadow:0 2px 6px rgba(5,42,102,0.08);font-weight:600;color:var(--accent-dark)}
+.game-area{display:grid;grid-template-columns:360px 1fr;gap:18px}
+.visual{background:var(--panel);border-radius:12px;padding:18px;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(5,42,102,0.06)}
+.visual img{max-width:100%;height:220px;object-fit:contain}
+.panel{display:flex;flex-direction:column;gap:12px}
+.controls{display:flex;gap:8px;align-items:center}
+.btn{border:0;padding:10px 14px;border-radius:10px;font-weight:700;cursor:pointer}
+.btn.primary{background:var(--accent-blue);color:#fff}
+.btn.ghost{background:transparent;border:2px solid var(--accent-blue);color:var(--accent-blue)}
+.mensagem{padding:8px 12px;border-radius:10px;background:var(--glass);color:var(--accent-dark);flex:1}
+.box-palavra{background:var(--panel);padding:16px;border-radius:10px;min-height:64px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(5,42,102,0.04)}
+#palavra{font-size:30px;letter-spacing:8px;margin:0;font-weight:800;color:var(--accent-dark)}
+.box-teclado{background:var(--panel);padding:12px;border-radius:10px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(5,42,102,0.04)}
+.key{min-width:44px;padding:10px;border-radius:8px;border:0;background:linear-gradient(180deg,#ffffff,#eef6ff);box-shadow:0 2px 6px rgba(5,42,102,0.06);font-weight:700;cursor:pointer}
+.key.used{background:#f1f4f9;color:var(--muted);cursor:not-allowed}
+.key.wrong{background:linear-gradient(180deg,#ffecec,#ffd6d6);color:var(--danger)}
+.key.right{background:linear-gradient(180deg,#e6f8ff,#d2efff);color:var(--accent-dark)}
+.rodape{text-align:center;color:var(--muted);font-size:13px;margin-top:6px}
+@media (max-width:820px){
+.game-area{grid-template-columns:1fr;}
+.visual img{height:160px}
+}
